@@ -68,9 +68,11 @@ ToonToestellen(toestellen);
 function ToestelProbleem(list) {
   list.forEach((toestel) => {
     toestel.onderhoud.forEach((probleem) => {
-      console.log(
-        `${probleem.id} - ${toestel.benaming} - ${probleem.omschrijving}`
-      );
+      if (!probleem.opgelost) {
+        console.log(
+          `${probleem.id} - ${toestel.benaming} - ${probleem.omschrijving}`
+        );
+      }
     });
   });
 }
