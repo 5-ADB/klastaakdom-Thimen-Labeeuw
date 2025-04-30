@@ -43,16 +43,36 @@ const toestellen = [
   },
 ];
 
-// Zorg ervoor dat onderstaande oplossingen ook gelden indien er aanpassingen gebeuren aan de lijst. 
+// Zorg ervoor dat onderstaande oplossingen ook gelden indien er aanpassingen gebeuren aan de lijst.
 
 /**
  * Zorg ervoor dat je de verschillende toestellen weergeeft op 1 rij
  * res: wasmachine, droogkast
  */
+function ToonToestellen(list) {
+  let toestellenArray = [];
+  list.forEach((toestel) => {
+    toestellenArray.push(toestel.benaming);
+  });
+  const toestellenString = toestellenArray.join(", ");
+  console.log(toestellenString);
+}
 
-
+ToonToestellen(toestellen);
 
 /**
  * Geef het id + toestel + probleem van de problemen die nog niet zijn opgelost
  * res: 2 - droogkast - filter stuk
  */
+
+function ToestelProbleem(list) {
+  list.forEach((toestel) => {
+    toestel.onderhoud.forEach((probleem) => {
+      console.log(
+        `${probleem.id} - ${toestel.benaming} - ${probleem.omschrijving}`
+      );
+    });
+  });
+}
+
+ToestelProbleem(toestellen);
