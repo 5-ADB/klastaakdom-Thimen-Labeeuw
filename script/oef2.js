@@ -42,3 +42,40 @@ const toestellen = [
     ],
   },
 ];
+
+//object toeveogen in html
+function AddToDo(list) {
+  list.forEach((toestel) => {
+    toestel.onderhoud.forEach((probleem) => {
+      const divToDo = document.createElement("div");
+      divToDo.className = "ToDo";
+      const ToDoText = document.createElement("p");
+      ToDoText.className = "ToDoText";
+      ToDoText.innerHTML = `id: ${probleem.id} - toestel: ${toestel.benaming}: ${probleem.omschrijving}`;
+      const CheckBtn = document.createElement("input");
+      CheckBtn.type = "checkbox";
+      CheckBtn.className = "checkBtn";
+      CheckBtn.innerHTML = "afwerken";
+      CheckBtn.addEventListener("click", () => {
+        if (CheckBtn.value == "on") {
+          DeleteToDo(divToDo);
+        }
+      });
+      divToDo.appendChild(ToDoText);
+      divToDo.appendChild(CheckBtn);
+      document.querySelector("#todoList").appendChild(divToDo);
+    });
+  });
+}
+
+console.log("hallo");
+
+function DeleteToDo(ToDo) {
+  document.querySelector("#afgehandeld").appendChild(ToDo);
+}
+
+function ToDoAdd(ToDo) {
+  document.querySelector("#todoList").appendChild(ToDo);
+}
+
+AddToDo(toestellen);
